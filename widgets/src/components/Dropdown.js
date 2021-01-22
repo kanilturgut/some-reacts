@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.addEventListener("click", () => {
+      setOpen(false);
+    });
+  }, []);
 
   const renderedOptions = options.map((option) => {
     // to no list already selected value
