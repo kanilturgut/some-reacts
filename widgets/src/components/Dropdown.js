@@ -5,12 +5,22 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener("click", (event) => {
+    // define the function whenever useEffect triggered
+    const onBodyClick = (event) => {
       if (ref.current && ref.current.contains(event.target)) {
         return;
       }
       setOpen(false);
-    });
+    };
+
+    // add a global click listener to #body element
+    document.body.addEventListener("click", onBodyClick);
+
+    // define a cleanup function which will also be triggered when Dropdown item is removed from DOM
+    return () => {
+      // in the removal process, remove that specific click function from #body' s global event listener
+      document.body.removeEventListener("click", onBodyClick);
+    };
   }, []);
 
   const renderedOptions = options.map((option) => {
