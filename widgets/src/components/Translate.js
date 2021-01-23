@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Convert from "./Convert";
 import Dropdown from "./Dropdown";
 
 const options = [
@@ -13,6 +14,10 @@ const options = [
   {
     label: "Hindi",
     value: "hi",
+  },
+  {
+    label: "Turkish",
+    value: "tr",
   },
 ];
 
@@ -35,6 +40,9 @@ export default () => {
         selected={selectedLanguage}
         onSelectedChange={setSelectedLanguage}
       />
+      <hr />
+      <h3 className="ui header">Output</h3>
+      <Convert language={selectedLanguage} text={text} />
     </div>
   );
 };
