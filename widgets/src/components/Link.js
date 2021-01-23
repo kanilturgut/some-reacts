@@ -7,6 +7,10 @@ const Link = ({ className, href, children }) => {
 
     // changes url without full page reload
     window.history.pushState({}, "", href);
+
+    // to listen navigation change add this event
+    const navEvent = new PopStateEvent("popstate");
+    window.dispatchEvent(navEvent);
   };
 
   return (
