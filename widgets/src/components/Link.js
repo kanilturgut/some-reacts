@@ -4,6 +4,8 @@ const Link = ({ className, href, children }) => {
   const onClick = (event) => {
     // to prevent full page reload
     event.preventDefault();
+
+    window.history.pushState({}, "", href);
   };
 
   return (
