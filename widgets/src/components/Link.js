@@ -5,6 +5,7 @@ const Link = ({ className, href, children }) => {
     // to prevent full page reload
     event.preventDefault();
 
+    // changes url without full page reload
     window.history.pushState({}, "", href);
   };
 
