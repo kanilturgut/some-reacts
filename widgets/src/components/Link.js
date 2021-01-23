@@ -2,6 +2,11 @@ import React from "react";
 
 const Link = ({ className, href, children }) => {
   const onClick = (event) => {
+    // windows ctrl key, mac command key
+    if (event.metaKey || event.ctrlKey) {
+      return;
+    }
+
     // to prevent full page reload
     event.preventDefault();
 
