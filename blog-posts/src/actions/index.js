@@ -1,10 +1,8 @@
 import jsonPlaceHolder from "../api/jsonplaceholder";
 
-export const fetchPosts = async () => {
+// async action creation with middleware
+export const fetchPosts = () => async (dispatch) => {
   const response = await jsonPlaceHolder.get("/posts");
 
-  return {
-    type: "FETCH_POSTS",
-    paylod: response,
-  };
+  dispatch({ type: "FETCH_POSTS", paylod: response });
 };
