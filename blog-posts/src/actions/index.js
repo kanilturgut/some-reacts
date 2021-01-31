@@ -4,8 +4,16 @@ import jsonPlaceHolder from "../api/jsonplaceholder";
 export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   await dispatch(fetchPosts());
 
-  const userIds = _.uniq(_.map(getState().posts, "userId"));
-  userIds.forEach((id) => dispatch(fetchUser(id)));
+  /*
+    const userIds = _.uniq(_.map(getState().posts, "userId"));
+    userIds.forEach((id) => dispatch(fetchUser(id)));
+  */
+
+  _.chain(getState().posts) // get posts from state
+    .map("userId") // get posts userId values
+    .uniq() // find only unique userIds
+    .forEach((id) => dispatch(fetchUser(id))) // for each userId, make request
+    .value();
 };
 
 // async action creation with middleware
