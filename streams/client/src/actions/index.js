@@ -1,11 +1,11 @@
 export const signIn = () => {
   return {
-    type: "SIGN IN",
+    type: "SIGN_IN",
   };
 };
 
 export const signOut = () => {
   return {
-    type: "SIGN OUT",
+    type: "SIGN_OUT",
   };
 };
