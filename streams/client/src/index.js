@@ -5,9 +5,9 @@ import { applyMiddleware, compose, createStore } from "redux";
 import App from "./components/App";
 import reducers from "./reducers";
 
-const componseEnhancers =
+const composeEnhancers =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, componseEnhancers(applyMiddleware()));
+const store = createStore(reducers, composeEnhancers(applyMiddleware()));
 
 ReactDOM.render(
   <Provider store={store}>
